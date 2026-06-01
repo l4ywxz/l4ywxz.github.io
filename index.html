@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Maria Eduarda ❤️</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ff8fab,#ffcad4);
+text-align:center;
+padding:20px;
+color:white;
+}
+.card{
+background:rgba(255,255,255,.15);
+padding:20px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+}
+button{
+background:#ff4d6d;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+margin-top:15px;
+font-size:16px;
+}
+.hidden{
+display:none;
+}
+#wheel{
+width:300px;
+height:300px;
+margin:20px auto;
+border-radius:50%;
+border:6px solid white;
+background:conic-gradient(
+#ff4d6d 0deg 72deg,
+#ff758f 72deg 144deg,
+#ff8fab 144deg 216deg,
+#ffb3c1 216deg 288deg,
+#ffc2d1 288deg 360deg
+);
+transition:transform 5s ease-out;
+}
+#foto{
+width:100%;
+max-width:350px;
+border-radius:15px;
+}
+</style>
+</head>
+<body>
+<div class="card" id="quiz">
+<h1>❤️ Quiz do Nosso Amor ❤️</h1>
+<p><b>1. Quando foi nosso primeiro beijo?</b></p>
+<input type="radio" name="q1" value="c">01/12/2024<br>
+<input type="radio" name="q1">15/11/2024<br>
+<input type="radio" name="q1">05/12/2024<br>
+<p><b>2. O que fez eu me apaixonar por você?</b></p>
+<input type="radio" name="q2" value="c">Seu sorriso, seus olhinhos e seu jeitinho doce<br>
+<input type="radio" name="q2">Seu cabelo<br>
+<input type="radio" name="q2">Seu estilo<br>
+<p><b>3. Eu disse "eu te amo" primeiro?</b></p>
+<input type="radio" name="q3" value="c">Verdadeiro<br>
+<input type="radio" name="q3">Falso<br>
+<p><b>4. Qual é a nossa música?</b></p>
+<input type="radio" name="q4" value="c">Will He<br>
+<input type="radio" name="q4">Perfect<br>
+<input type="radio" name="q4">Photograph<br>
+<br>
+<button onclick="corrigir()">Finalizar ❤️</button>
+</div>
+<div class="card hidden" id="fotoArea">
+<h2>📸 Nossa Foto</h2>
+<img id="foto" src="foto.jpg">
+<p>
+Desde o início eu sempre soube que seria você, meu amor. ❤️
+</p>
+<button onclick="abrirRoleta()">Continuar</button>
+</div>
+<div class="card hidden" id="roletaArea">
+<h2>🎡 Nosso Próximo Encontro</h2>
+<div id="wheel"></div>
+<button onclick="girar()">Girar Roleta</button>
+<h3 id="resultado"></h3>
+</div>
+<div class="card hidden" id="final">
+<h2>💌 Para Maria Eduarda</h2>
+<p>
+Desde o início eu sempre soube que seria você, meu amor.
+<br><br>
+No dia 18/12/2024 começamos nossa história oficialmente, mas meu coração já tinha escolhido você muito antes.
+<br><br>
+Seu sorriso, seus olhinhos e seu jeitinho doce foram as coisas que me fizeram me apaixonar por você.
+<br><br>
+Obrigado por cada abraço, cada beijo, cada risada e cada momento que vivemos juntos.
+<br><br>
+Independentemente do lugar que a roleta escolher, o melhor lugar sempre será ao seu lado.
+<br><br>
+❤️ Eu te amo muito ❤️
+</p>
+</div>
+<script>
+function corrigir(){
+let acertos=document.querySelectorAll('input[value="c"]:checked').length;
+if(acertos>=3){
+document.getElementById("quiz").classList.add("hidden");
+document.getElementById("fotoArea").classList.remove("hidden");
+}else{
+alert("Tente novamente ❤️");
+}
+}
+function abrirRoleta(){
+document.getElementById("fotoArea").classList.add("hidden");
+document.getElementById("roletaArea").classList.remove("hidden");
+}
+const lugares=[
+"Cinema 🎬",
+"Piquenique 🧺",
+"Restaurante 🍽️",
+"Glow Park ✨",
+"Shopping 🛍️"
+];
+function girar(){
+let sorteio=Math.floor(Math.random()*lugares.length);
+document.getElementById("wheel").style.transform=
+"rotate("+(3600+Math.random()*360)+"deg)";
+setTimeout(()=>{
+document.getElementById("resultado").innerHTML=
+lugares[sorteio];
+document.getElementById("final").classList.remove("hidden");
+},5000);
+}
+</script>
+</body>
+</
