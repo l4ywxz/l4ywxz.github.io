@@ -171,13 +171,21 @@ Independentemente do lugar que a roleta escolher, o melhor lugar sempre será ao
 </div>
 <script>
 function corrigir(){
-let acertos=document.querySelectorAll('input[value="c"]:checked').length;
-if(acertos>=3){
-document.getElementById("quiz").classList.add("hidden");
-document.getElementById("fotoArea").classList.remove("hidden");
+
+let acertos = 0;
+
+if(document.querySelector('input[name="q1"][value="c"]:checked')) acertos++;
+if(document.querySelector('input[name="q2"][value="c"]:checked')) acertos++;
+if(document.querySelector('input[name="q3"][value="c"]:checked')) acertos++;
+if(document.querySelector('input[name="q4"][value="c"]:checked')) acertos++;
+
+if(acertos >= 3){
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("fotoArea").style.display = "block";
 }else{
-alert("Tente novamente ❤️");
+    alert("Tente novamente ❤️");
 }
+
 }
 function abrirRoleta(){
 document.getElementById("fotoArea").classList.add("hidden");
