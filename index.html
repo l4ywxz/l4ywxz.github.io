@@ -58,6 +58,14 @@ height:320px;
 margin:auto;
 }
 
+#foto{
+width:320px;
+height:320px;
+object-fit:cover;
+border-radius:15px;
+display:block;
+}
+
 #scratchCanvas{
 position:absolute;
 top:0;
@@ -66,8 +74,8 @@ width:320px;
 height:320px;
 background:#999;
 border-radius:15px;
-touch-action:none;
 z-index:10;
+touch-action:none;
 }
 .heart{
 position:fixed;
@@ -113,7 +121,7 @@ transform:translateY(110vh);
 
 <img id="foto" src="foto.jpg.heic">
 
-<canvas id="scratchCanvas" width="320" height="320"></canvas>
+<canvas id="scratchCanvas"></canvas>
 
 </div>
 
@@ -221,19 +229,22 @@ setInterval(() => {
 }, 500);
 window.addEventListener("load", () => {
 
-const canvas = document.getElementById("scratchCanvas");
+const canvas = document.getElementById(“scratchCanvas”);
 
 if(canvas){
 
-const ctx = canvas.getContext("2d");
+canvas.width = 320;
+canvas.height = 320;
 
-ctx.fillStyle = "#999";
-ctx.fillRect(0,0,canvas.width,canvas.height);
+const ctx = canvas.getContext(“2d”);
 
-ctx.fillStyle = "#fff";
-ctx.font = "24px Arial";
-ctx.textAlign = "center";
-ctx.fillText("RASPE AQUI ❤️",160,160);
+ctx.fillStyle = “#999”;
+ctx.fillRect(0,0,320,320);
+
+ctx.fillStyle = “#fff”;
+ctx.font = “24px Arial”;
+ctx.textAlign = “center”;
+ctx.fillText(“RASPE AQUI ❤️”,160,160)
 
 let raspando = false;
 
