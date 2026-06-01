@@ -4,53 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Maria Eduarda ❤️</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
 font-family:Arial,sans-serif;
 background:linear-gradient(135deg,#ff8fab,#ffcad4);
+color:white;
 text-align:center;
 padding:20px;
-color:white;
+overflow-x:hidden;
 }
+
 .card{
 background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
 padding:20px;
 border-radius:20px;
 max-width:700px;
-margin:auto;
+margin:20px auto;
 }
+
+.hidden{
+display:none;
+}
+
 button{
 background:#ff4d6d;
 color:white;
 border:none;
 padding:12px 20px;
 border-radius:10px;
-margin-top:15px;
 font-size:16px;
+cursor:pointer;
+margin-top:15px;
 }
-.hidden{
-display:none;
+
+h1,h2,h3{
+margin-bottom:15px;
 }
-#wheel{
-width:300px;
-height:300px;
-margin:20px auto;
-border-radius:50%;
-border:6px solid white;
-background:conic-gradient(
-#ff4d6d 0deg 72deg,
-#ff758f 72deg 144deg,
-#ff8fab 144deg 216deg,
-#ffb3c1 216deg 288deg,
-#ffc2d1 288deg 360deg
-);
-transition:transform 5s ease-out;
+
+p{
+margin:12px 0;
+line-height:1.6;
 }
-#foto{
-width:100%;
-max-width:350px;
-border-radius:15px;
-}
+
 #scratchContainer{
 position:relative;
 width:320px;
@@ -72,17 +75,40 @@ top:0;
 left:0;
 width:320px;
 height:320px;
-background:#999;
 border-radius:15px;
 z-index:10;
 touch-action:none;
 }
+
+.galeria img{
+width:250px;
+border-radius:15px;
+margin:10px 0;
+}
+
+#wheel{
+width:300px;
+height:300px;
+margin:20px auto;
+border-radius:50%;
+border:8px solid white;
+transition:transform 5s ease-out;
+background:
+conic-gradient(
+#ff4d6d 0deg 72deg,
+#ff758f 72deg 144deg,
+#ff8fab 144deg 216deg,
+#ffb3c1 216deg 288deg,
+#ffc2d1 288deg 360deg
+);
+}
+
 .heart{
 position:fixed;
-top:-10px;
+top:-20px;
 font-size:20px;
-animation:fall linear forwards;
 pointer-events:none;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
@@ -92,27 +118,50 @@ transform:translateY(110vh);
 }
 </style>
 </head>
+
 <body>
+
 <div class="card" id="quiz">
+
 <h1>❤️ Quiz do Nosso Amor ❤️</h1>
+
 <h2 id="contador"></h2>
+
 <p><b>1. Quando foi nosso primeiro beijo?</b></p>
-<input type="radio" name="q1" value="c">01/12/2024<br>
-<input type="radio" name="q1">15/11/2024<br>
-<input type="radio" name="q1">05/12/2024<br>
+
+<label><input type="radio" name="q1" value="c"> 01/12/2024</label><br>
+<label><input type="radio" name="q1"> 15/11/2024</label><br>
+<label><input type="radio" name="q1"> 05/12/2024</label>
+
+<br><br>
+
 <p><b>2. O que fez eu me apaixonar por você?</b></p>
-<input type="radio" name="q2" value="c">Seu sorriso, seus olhinhos e seu jeitinho doce<br>
-<input type="radio" name="q2">A maneira como voce trata as pessoas<br>
-<input type="radio" name="q2">Seu jeitinho, seu olhar e a sua risada<br>
+
+<label><input type="radio" name="q2" value="c"> Seu sorriso, seus olhinhos e seu jeitinho doce</label><br>
+<label><input type="radio" name="q2"> A maneira como você trata as pessoas</label><br>
+<label><input type="radio" name="q2"> Seu jeitinho, seu olhar e a sua risada</label>
+
+<br><br>
+
 <p><b>3. Eu disse "eu te amo" primeiro?</b></p>
-<input type="radio" name="q3" value="c">Verdadeiro<br>
-<input type="radio" name="q3">Falso<br>
+
+<label><input type="radio" name="q3" value="c"> Verdadeiro</label><br>
+<label><input type="radio" name="q3"> Falso</label>
+
+<br><br>
+
 <p><b>4. Qual é a nossa música?</b></p>
-<input type="radio" name="q4" value="c">Will He<br>
-<input type="radio" name="q4">Perfect<br>
-<input type="radio" name="q4">Photograph<br>
+
+<label><input type="radio" name="q4" value="c"> Will He</label><br>
+<label><input type="radio" name="q4"> Perfect</label><br>
+<label><input type="radio" name="q4"> Photograph</label>
+
 <br>
+
 <button onclick="corrigir()">Finalizar ❤️</button>
+
+</div>
+
 <div class="card hidden" id="fotoArea">
 
 <h2>✨ Raspe para revelar nossa foto ✨</h2>
@@ -127,169 +176,238 @@ transform:translateY(110vh);
 
 <p>Use o dedo para raspar a camada cinza ❤️</p>
 
-<h2>Nossas Memórias ❤️</h2>
-
-<img src="foto2.jpg.heic" width="250">
-<br><br>
-
-<img src="foto3.jpg.jpg" width="250">
-<br><br>
-
-<img src="foto4.jpg.JPG" width="250">
-
-<p>
-Desde o início eu sempre soube que seria você, meu amor. ❤️
-</p>
-
-<button onclick="abrirRoleta()">Continuar</button>
+<button onclick="abrirGaleria()">Continuar</button>
 
 </div>
+
+<div class="card hidden" id="galeria">
+
+<h2>📸 Nossas Memórias ❤️</h2>
+
+<div class="galeria">
+<img src="foto2.jpg.heic">
+<br>
+<img src="foto3.jpg.jpg">
+<br>
+<img src="foto4.jpg.JPG">
+</div>
+
+<button onclick="abrirRoleta()">Ir para a Roleta 🎡</button>
+
+</div>
+
 <div class="card hidden" id="roletaArea">
-<h2>🎡 Nosso Próximo Encontro</h2>
+
+<h2>🎡 Escolha do Nosso Encontro 🎡</h2>
+
 <div id="wheel"></div>
+
 <button onclick="girar()">Girar Roleta</button>
-<h3 id="resultado"></h3>
+
+<h2 id="resultado"></h2>
+
 </div>
+
 <div class="card hidden" id="final">
-<h2>💌 Para Maria Eduarda</h2>
+
+<h2>💌 Para Maria Eduarda 💌</h2>
+
 <p>
 Desde o início eu sempre soube que seria você, meu amor.
 <br><br>
-No dia 18/12/2024 começamos nossa história oficialmente, mas meu coração já tinha escolhido você muito antes.
+No dia 18/12/2024 começamos oficialmente nossa história.
 <br><br>
 Seu sorriso, seus olhinhos e seu jeitinho doce foram as coisas que me fizeram me apaixonar por você.
 <br><br>
-Obrigado por cada abraço, cada beijo, cada risada e cada momento que vivemos juntos.
+Obrigado por cada abraço, cada beijo, cada risada e cada momento vivido ao seu lado.
 <br><br>
-Independentemente do lugar que a roleta escolher, o melhor lugar sempre será ao seu lado.
+Independentemente do resultado da roleta, o melhor lugar sempre será ao seu lado.
 <br><br>
 ❤️ Eu te amo muito ❤️
 <br><br>
-
-🎁 Vale um beijo infinito e um abraço que nunca acaba ❤️
+🎁 Vale um beijo infinito e um abraço que nunca acaba.
 </p>
+
 </div>
+
 <script>
+
 function corrigir(){
-    alert("Botão funcionando!");
+
+let acertos = 0;
+
+if(document.querySelector('input[name="q1"][value="c"]:checked')) acertos++;
+if(document.querySelector('input[name="q2"][value="c"]:checked')) acertos++;
+if(document.querySelector('input[name="q3"][value="c"]:checked')) acertos++;
+if(document.querySelector('input[name="q4"][value="c"]:checked')) acertos++;
+
+if(acertos >= 3){
+document.getElementById("quiz").classList.add("hidden");
+document.getElementById("fotoArea").classList.remove("hidden");
+}else{
+alert("Tente novamente ❤️");
 }
 
 }
-function abrirRoleta(){
+
+function abrirGaleria(){
 document.getElementById("fotoArea").classList.add("hidden");
+document.getElementById("galeria").classList.remove("hidden");
+}
+
+function abrirRoleta(){
+document.getElementById("galeria").classList.add("hidden");
 document.getElementById("roletaArea").classList.remove("hidden");
 }
-const lugares=[
+
+const lugares = [
 "Cinema 🎬",
 "Piquenique 🧺",
 "Restaurante 🍽️",
 "Glow Park ✨",
 "Shopping 🛍️"
 ];
+
 function girar(){
-let sorteio=Math.floor(Math.random()*lugares.length);
-document.getElementById("wheel").style.transform=
-"rotate("+(3600+Math.random()*360)+"deg)";
-setTimeout(()=>{
-document.getElementById("resultado").innerHTML=
-lugares[sorteio];
+
+let sorteio = Math.floor(Math.random()*lugares.length);
+
+document.getElementById("wheel").style.transform =
+"rotate(" + (3600 + Math.random()*360) + "deg)";
+
+setTimeout(() => {
+
+document.getElementById("resultado").innerHTML =
+"Nosso encontro será:<br><br>" + lugares[sorteio];
+
 document.getElementById("final").classList.remove("hidden");
+
 },5000);
+
 }
-function atualizarContador() {
-    const contador = document.getElementById("contador");
 
-    if (!contador) return;
+function atualizarContador(){
 
-    const inicio = new Date("2024-12-18");
-    const hoje = new Date();
+const inicio = new Date("2024-12-18");
+const hoje = new Date();
 
-    const diff = hoje - inicio;
-    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+const diff = hoje - inicio;
 
-    contador.innerHTML = `💕 Juntos há ${dias} dias 💕`;
+const dias = Math.floor(
+diff/(1000*60*60*24)
+);
+
+document.getElementById("contador").innerHTML =
+"💕 Juntos há " + dias + " dias 💕";
+
 }
 
 atualizarContador();
 
 setInterval(() => {
-    const heart = document.createElement("div");
 
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
+const heart = document.createElement("div");
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration =
-        (3 + Math.random() * 4) + "s";
+heart.className = "heart";
+heart.innerHTML = "❤️";
 
-    document.body.appendChild(heart);
+heart.style.left =
+Math.random()*100 + "vw";
 
-    setTimeout(() => heart.remove(), 7000);
-}, 500);
+heart.style.animationDuration =
+(3 + Math.random()*4) + "s";
+
+document.body.appendChild(heart);
+
+setTimeout(() => {
+heart.remove();
+},7000);
+
+},500);
+
 window.addEventListener("load", () => {
 
-const canvas = document.getElementById(“scratchCanvas”);
+const canvas =
+document.getElementById("scratchCanvas");
 
-if(canvas){
+if(!canvas) return;
 
 canvas.width = 320;
 canvas.height = 320;
 
-const ctx = canvas.getContext(“2d”);
+const ctx = canvas.getContext("2d");
 
-ctx.fillStyle = “#999”;
+ctx.fillStyle = "#999";
 ctx.fillRect(0,0,320,320);
 
-ctx.fillStyle = “#fff”;
-ctx.font = “24px Arial”;
-ctx.textAlign = “center”;
-ctx.fillText(“RASPE AQUI ❤️”,160,160)
+ctx.fillStyle = "#fff";
+ctx.font = "24px Arial";
+ctx.textAlign = "center";
+ctx.fillText("RASPE AQUI ❤️",160,160);
 
 let raspando = false;
 
 function raspar(x,y){
-ctx.globalCompositeOperation = "destination-out";
+
+ctx.globalCompositeOperation =
+"destination-out";
+
 ctx.beginPath();
 ctx.arc(x,y,25,0,Math.PI*2);
 ctx.fill();
+
 }
 
-canvas.addEventListener("mousedown",()=>raspando=true);
-canvas.addEventListener("mouseup",()=>raspando=false);
-
-canvas.addEventListener("mousemove",(e)=>{
-if(!raspando) return;
-
-const rect = canvas.getBoundingClientRect();
-
-raspar(
-e.clientX-rect.left,
-e.clientY-rect.top
-);
+canvas.addEventListener("mousedown", () => {
+raspando = true;
 });
 
-canvas.addEventListener("touchstart",()=>raspando=true);
-canvas.addEventListener("touchend",()=>raspando=false);
+canvas.addEventListener("mouseup", () => {
+raspando = false;
+});
 
-canvas.addEventListener("touchmove",(e)=>{
+canvas.addEventListener("mousemove", (e) => {
 
 if(!raspando) return;
 
-const rect = canvas.getBoundingClientRect();
+const rect =
+canvas.getBoundingClientRect();
+
+raspar(
+e.clientX - rect.left,
+e.clientY - rect.top
+);
+
+});
+
+canvas.addEventListener("touchstart", () => {
+raspando = true;
+});
+
+canvas.addEventListener("touchend", () => {
+raspando = false;
+});
+
+canvas.addEventListener("touchmove", (e) => {
+
+if(!raspando) return;
+
+const rect =
+canvas.getBoundingClientRect();
+
 const touch = e.touches[0];
 
 raspar(
-touch.clientX-rect.left,
-touch.clientY-rect.top
+touch.clientX - rect.left,
+touch.clientY - rect.top
 );
 
 e.preventDefault();
 
 });
 
-}
-
 });
+
 </script>
+
 </body>
-</
