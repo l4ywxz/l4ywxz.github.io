@@ -51,11 +51,25 @@ width:100%;
 max-width:350px;
 border-radius:15px;
 }
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
 </style>
 </head>
 <body>
 <div class="card" id="quiz">
 <h1>❤️ Quiz do Nosso Amor ❤️</h1>
+<h2 id="contador"></h2>
 <p><b>1. Quando foi nosso primeiro beijo?</b></p>
 <input type="radio" name="q1" value="c">01/12/2024<br>
 <input type="radio" name="q1">15/11/2024<br>
@@ -77,6 +91,15 @@ border-radius:15px;
 <div class="card hidden" id="fotoArea">
 <h2>📸 Nossa Foto</h2>
 <img id="foto" src="foto.jpg.heic">
+<h2>Nossas Memórias ❤️</h2>
+
+<img src="foto2.jpg" width="250">
+<br><br>
+
+<img src="foto3.jpg" width="250">
+<br><br>
+
+<img src="foto4.jpg" width="250">
 <p>
 Desde o início eu sempre soube que seria você, meu amor. ❤️
 </p>
@@ -102,6 +125,9 @@ Obrigado por cada abraço, cada beijo, cada risada e cada momento que vivemos ju
 Independentemente do lugar que a roleta escolher, o melhor lugar sempre será ao seu lado.
 <br><br>
 ❤️ Eu te amo muito ❤️
+<br><br>
+
+🎁 Vale um beijo infinito e um abraço que nunca acaba ❤️
 </p>
 </div>
 <script>
@@ -135,6 +161,33 @@ lugares[sorteio];
 document.getElementById("final").classList.remove("hidden");
 },5000);
 }
+function atualizarContador() {
+    const inicio = new Date("2024-12-18");
+    const hoje = new Date();
+
+    const diff = hoje - inicio;
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("contador").innerHTML =
+        `💕 Juntos há ${dias} dias 💕`;
+}
+
+atualizarContador();
+
+setInterval(() => {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+}, 500);
 </script>
 </body>
 </
