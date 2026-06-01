@@ -51,6 +51,19 @@ width:100%;
 max-width:350px;
 border-radius:15px;
 }
+#scratchContainer{
+position:relative;
+width:320px;
+margin:auto;
+}
+
+#scratchCanvas{
+position:absolute;
+left:0;
+top:0;
+border-radius:15px;
+touch-action:none;
+}
 .heart{
 position:fixed;
 top:-10px;
@@ -87,10 +100,20 @@ transform:translateY(110vh);
 <input type="radio" name="q4">Photograph<br>
 <br>
 <button onclick="corrigir()">Finalizar ❤️</button>
-</div>
 <div class="card hidden" id="fotoArea">
-<h2>📸 Nossa Foto</h2>
+
+<h2>✨ Raspe para revelar nossa foto ✨</h2>
+
+<div id="scratchContainer">
+
 <img id="foto" src="foto.jpg.heic">
+
+<canvas id="scratchCanvas" width="320" height="320"></canvas>
+
+</div>
+
+<p>Use o dedo para raspar a camada cinza ❤️</p>
+
 <h2>Nossas Memórias ❤️</h2>
 
 <img src="foto2.jpg.heic" width="250">
@@ -100,10 +123,13 @@ transform:translateY(110vh);
 <br><br>
 
 <img src="foto4.jpg.JPG" width="250">
+
 <p>
 Desde o início eu sempre soube que seria você, meu amor. ❤️
 </p>
+
 <button onclick="abrirRoleta()">Continuar</button>
+
 </div>
 <div class="card hidden" id="roletaArea">
 <h2>🎡 Nosso Próximo Encontro</h2>
@@ -188,6 +214,63 @@ setInterval(() => {
 
     setTimeout(() => heart.remove(), 7000);
 }, 500);
+const canvas = document.getElementById("scratchCanvas");
+
+if(canvas){
+
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "#999";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#fff";
+ctx.font = "24px Arial";
+ctx.textAlign = "center";
+ctx.fillText("RASPE AQUI ❤️",160,160);
+
+let raspando = false;
+
+function raspar(x,y){
+ctx.globalCompositeOperation = "destination-out";
+ctx.beginPath();
+ctx.arc(x,y,25,0,Math.PI*2);
+ctx.fill();
+}
+
+canvas.addEventListener("mousedown",()=>raspando=true);
+canvas.addEventListener("mouseup",()=>raspando=false);
+
+canvas.addEventListener("mousemove",(e)=>{
+if(!raspando) return;
+
+const rect = canvas.getBoundingClientRect();
+
+raspar(
+e.clientX-rect.left,
+e.clientY-rect.top
+);
+});
+
+canvas.addEventListener("touchstart",()=>raspando=true);
+canvas.addEventListener("touchend",()=>raspando=false);
+
+canvas.addEventListener("touchmove",(e)=>{
+
+if(!raspando) return;
+
+const rect = canvas.getBoundingClientRect();
+const touch = e.touches[0];
+
+raspar(
+touch.clientX-rect.left,
+touch.clientY-rect.top
+);
+
+e.preventDefault();
+
+});
+
+}
 </script>
 </body>
 </
